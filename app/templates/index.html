@@ -1,0 +1,11 @@
+{% include 'include/base.html' %}
+{% include 'include/header.html' %}
+<div class="flow-container" id="earssy-content">
+    {% for entry in entries %}
+        <div class="earssy-content-card">
+            <br /><span>›</span><a href="{{ entry.link }}">{{ entry.title }}</a>
+            <img src="{{ entry.media_thumbnail[0]['url'] }}" />
+        </div>
+    {% endfor %}
+</div>
+

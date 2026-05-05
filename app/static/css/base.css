@@ -1,0 +1,35 @@
+html {
+    background-color: #fcecd8;
+    font-family: 'Poppins';
+}
+
+body {
+    display: flex;
+    margin: 0;
+    padding: 1vmax;
+    gap: 1vmax;
+    flex-direction: column;
+}
+
+.flow-container {
+    padding: 0.5vmax 2vmax;
+    background-color: #fde3c2;
+    border-radius: 1vmax;
+    box-shadow: 0 0 0.5vmax 0.25vmax #a1907b;
+}
+
+#earssy-content {
+    display: flex;
+    padding: 1vmax;
+    gap: 1vmax;
+    flex-direction: column;
+}
+
+.earssy-content-card {
+    display: flex;
+    gap: 1vmax;
+    background-color: #d0b899;
+    box-shadow: 0 0 0.5vmax 0.25vmax #a1907b;
+    border-radius: 0.5vmax;
+    padding: 1vmax;
+}
