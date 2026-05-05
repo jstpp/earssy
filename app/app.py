@@ -5,7 +5,12 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def site_main():
-    rss_url = "https://feeds.bbci.co.uk/news/rss.xml" # Temporary URL for initial setup. Will be replaced by mysql database.
-    context = feedparser.parse(rss_url)
+    rss_urls = ["https://feeds.bbci.co.uk/news/rss.xml",
+                "https://www.polsatnews.pl/rss/swiat.xml"] # Temporary URLs for initial setup. Will be replaced by mysql database.
+
+    context = {'channels': []}
+
+    for url in rss_urls:
+        context['channels'].append(feedparser.parse(url))
 
     return render_template('index.html', **context)

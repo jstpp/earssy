@@ -1,11 +1,25 @@
 {% include 'include/base.html' %}
 {% include 'include/header.html' %}
 <div class="flow-container" id="earssy-content">
-    {% for entry in entries %}
-        <div class="earssy-content-card">
-            <br /><span>›</span><a href="{{ entry.link }}">{{ entry.title }}</a>
-            <img src="{{ entry.media_thumbnail[0]['url'] }}" />
-        </div>
+    {% for channel in channels %}
+        {% for entry in channel.entries %}
+            <a href="{{ entry.link }}">
+                <div class="earssy-content-card">
+                    <img src="
+                    {% if entry.media_thumbnail!=null %}
+                        {{ entry.media_thumbnail[0]['url'] }}
+                    {% else %}
+                        /static/img/placeholder.jpeg
+                    {% endif %}
+                    " />
+                    <div class="earssy-content-card-text-container">
+                        <h3 class="earssy-content-card-title"><span>{{channel["feed"]["title"]}} ›</span>&nbsp;&nbsp;{{ entry.title }}</h3>
+                        <small class="earssy-content-card-metadata">{{ entry.published }} <span>›</span> {{ entry.link }}</small>
+                        <p class="earssy-content-card-description">{{ entry.summary }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
     {% endfor %}
 </div>
 
