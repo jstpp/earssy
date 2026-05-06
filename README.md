@@ -8,6 +8,8 @@ Under construction:)
 
 ## Screenshot
 
+![app/static/img/screenshot1.png](app/static/img/screenshot1.png)
+
 ## Running docker
 To start eaRSSy using docker execute:
 
@@ -15,4 +17,6 @@ To start eaRSSy using docker execute:
 docker compose up
 ```
 in root directory. Everyting will set up automatically. App is now available with `localhost:80`. Have a fun!
-> [!tip] This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+
+> [!tip] 
+> This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
