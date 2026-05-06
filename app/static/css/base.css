@@ -16,6 +16,16 @@ a {
     text-decoration: none;
 }
 
+small, span {
+    color: gray;
+}
+
+#earssy-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .flow-container {
     padding: 0.5vmax 2vmax;
     background-color: #fde3c2;
@@ -28,6 +38,15 @@ a {
     padding: 1vmax;
     gap: 1vmax;
     flex-direction: column;
+}
+.earssy-content-header {
+    display: flex;
+    gap: 1vmax;
+    color: white;
+    background-color: #00044b;
+    box-shadow: 0 0 0.5vmax 0.25vmax #a1907b;
+    border-radius: 0.5vmax;
+    padding: 1vmax;
 }
 
 .earssy-content-card {
@@ -53,10 +72,17 @@ a {
     object-position: 25% 25%; 
 }
 
-.earssy-content-card-text-container span, .earssy-content-card-text-container small {
-    color: gray;
-}
-
 .earssy-content-card-text-container * {
     margin: 0;
+}
+
+@media screen and (max-width: 700px) {
+    .earssy-content-card {
+        flex-direction: column;
+    }
+    .earssy-content-card img {
+        min-width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
 }

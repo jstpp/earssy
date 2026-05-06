@@ -1,0 +1,23 @@
+{% include 'include/base.html' %}
+{% include 'include/header.html' %}
+<div class="flow-container" id="earssy-profile">
+    <br />
+    <br />
+    <h2 style="margin: 0;">Profile</h2>
+    <small>Username and password change options.</small>
+    <br />
+    <br />
+    <h2 style="margin: 0;">RSS channels</h2>
+    <small>List of RSS channels to download feeds.</small>
+    <br />
+    <br />
+    <div style="display: flex; gap: 1vmax;">
+        {% for channel in channels %}
+            <div class="earssy-content-card">
+                {{ channel['feed']['title'] }}
+            </div>
+        {% endfor %}
+    </div>
+    <br />
+    <br />
+</div>

@@ -1,5 +1,11 @@
 services:
-
+    mysql:
+        image: mariadb:lts-ubi9
+        environment:
+          MYSQL_ROOT_PASSWORD: earssy_db_root
+          MYSQL_DATABASE: earssy_db
+          MYSQL_USER: earssy_db
+          MYSQL_PASSWORD: earssy_db
     web:
         build:
             dockerfile: ./Dockerfile
@@ -11,11 +17,3 @@ services:
           - ./app/:/earssy/
         stop_signal: SIGINT
         command: python3 -m flask --app /earssy/app.py run -h 0.0.0.0 -p 80
-
-    mysql:
-        image: mariadb:lts-ubi9
-        environment:
-          MYSQL_ROOT_PASSWORD: earssy_db_root
-          MYSQL_DATABASE: earssy_db
-          MYSQL_USER: earssy_db
-          MYSQL_PASSWORD: earssy_db

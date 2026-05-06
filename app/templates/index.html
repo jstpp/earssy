@@ -2,12 +2,17 @@
 {% include 'include/header.html' %}
 <div class="flow-container" id="earssy-content">
     {% for channel in channels %}
+        <div class="earssy-content-header">
+            <h3>{{channel["feed"]["title"]}}</h3>
+        </div>
         {% for entry in channel.entries %}
             <a href="{{ entry.link }}">
                 <div class="earssy-content-card">
                     <img src="
                     {% if entry.media_thumbnail!=null %}
                         {{ entry.media_thumbnail[0]['url'] }}
+                    {% elif entry.enclosures!=null %}
+                        {{ entry.enclosures[0]['url'] }}
                     {% else %}
                         /static/img/placeholder.jpeg
                     {% endif %}
