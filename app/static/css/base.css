@@ -17,7 +17,7 @@ a {
 }
 
 small, span {
-    color: gray;
+    color: #00044b;
 }
 
 #earssy-header {
@@ -31,6 +31,22 @@ small, span {
     background-color: #fde3c2;
     border-radius: 1vmax;
     box-shadow: 0 0 0.5vmax 0.25vmax #a1907b;
+}
+#earssy-login form {
+    width: 100%;
+    display: flex;
+    gap: 0.5vmax;
+    flex-direction: column;
+    align-items: center;
+}
+
+#earssy-login input {
+    padding: 1vmax;
+    border-radius: 1vmax;
+    border: none;
+    width: 50%;
+    box-shadow: 0 0 0.25vmax 0.12vmax #a1907b;
+    transition: 0.3s;
 }
 
 #earssy-content {

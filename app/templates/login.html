@@ -1,0 +1,16 @@
+{% include 'include/base.html' %}
+{% include 'include/header.html' %}
+<div class="flow-container" id="earssy-login">
+    <br />
+    <br />
+    <h1 style="text-align: center;">Log in</h1>
+    <br />
+    <br />
+    <form method="POST" action="/profile">
+        <input name="login_username" type="text" placeholder="username" />
+        <input name="login_password" type="password" placeholder="password" /><br /><br />
+        <input type="submit" value="Log in" />
+    </form>
+    <br />
+    <br />
+</div>

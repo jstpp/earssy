@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session
-import mysql.connector
-import feedparser
+import os
+
+from include import context, auth
 
 app = Flask(__name__)
 
@@ -8,26 +9,25 @@ app.config['MYSQL_HOST'] = 'mysql'
 app.config['MYSQL_USER'] = 'earssy_db'
 app.config['MYSQL_PASSWORD'] = 'earssy_db'
 app.config['MYSQL_DB'] = 'earssy_db'
+app.secret_key = os.getenv("EARSSY_SECRET_KEY")
 
-#db = mysql.connector.connect(user=app.config['MYSQL_USER'], password=app.config['MYSQL_PASSWORD'], database=app.config['MYSQL_DB'])
-#cursor = db.cursor(dictionary=True, buffered=True)
 
 rss_urls = ["https://feeds.bbci.co.uk/news/rss.xml",
             "https://www.polsatnews.pl/rss/swiat.xml"] # Temporary URLs for initial setup. Will be replaced by mysql database.
 
-def get_context(rss_urls):
-    context = {'channels': []}
-    for url in rss_urls:
-        context['channels'].append(feedparser.parse(url))
-    return context
-
-context = get_context(rss_urls)
+context = context.get_context(rss_urls, app) # Will be initialized with users' login
 
 @app.route("/", methods=['GET'])
 def site_main():
     return render_template('index.html', **context)
 
 
-@app.route("/profile", methods=['GET'])
+@app.route("/profile", methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html', **context)
+    if(request.form.get('login_username', 'none')!='none' and request.form.get('login_password', 'none')!='none'):
+        if(auth.user_auth(request.form.get('login_username', 'none'), request.form.get('login_password', 'none'))):
+            return render_template('profile.html', **context) #TBD
+    if(session.get("user")):
+        return render_template('profile.html', **context)
+    else:
+        return render_template('login.html', **context)

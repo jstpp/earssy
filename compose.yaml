@@ -1,6 +1,7 @@
 services:
     mysql:
-        image: mariadb:lts-ubi9
+        build:
+            dockerfile: ./setup/mysql-dockerfile
         environment:
           MYSQL_ROOT_PASSWORD: earssy_db_root
           MYSQL_DATABASE: earssy_db
@@ -8,12 +9,14 @@ services:
           MYSQL_PASSWORD: earssy_db
     web:
         build:
-            dockerfile: ./Dockerfile
+            dockerfile: ./setup/web-dockerfile
         ports:
           - '80:80'
         depends_on:
           - mysql
         volumes:
           - ./app/:/earssy/
+        environment:
+          - EARSY_SECRET_KEY=really_bad_key
         stop_signal: SIGINT
         command: python3 -m flask --app /earssy/app.py run -h 0.0.0.0 -p 80
