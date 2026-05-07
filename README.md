@@ -4,6 +4,7 @@
     <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/jstpp/earssy?style=for-the-badge">
     <a href="https://www.codefactor.io/repository/github/jstpp/earssy"><img src="https://www.codefactor.io/repository/github/jstpp/earssy/badge?style=for-the-badge" alt="CodeFactor" /></a>
 </p>
+
 `eaRSSy` - An RSS reader with multiple features. Define your RSS channels and browse the latest news in an easy and convenient way. All your news, one simple feed. 
 
 > [!warning]
